@@ -17,7 +17,9 @@ jobs:
         uses: azure/setup-helm@v1
 
       - name: Run chart-releaser
-        uses: helm/chart-releaser-action@v1.4.0
+        uses: helm/chart-releaser-action@v1.5.0
+        inputs:
+          skip_packaging: true
         env:
           CR_TOKEN: "${{ secrets.GHCR_PAT }}"
           CR_OWNER: truecharts
