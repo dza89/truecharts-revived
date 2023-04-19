@@ -28,6 +28,6 @@ jobs:
         with:
           skip_packaging: true
         env:
-          CR_TOKEN: "${{ secrets.GHCR_PAT }}"
+          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           CR_OWNER: truecharts
           CR_GIT_REPO: charts
