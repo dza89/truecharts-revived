@@ -1,0 +1,24 @@
+name: Helm Chart Release
+
+on:
+  schedule:
+    - cron:  '0 0 * * *'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Install Helm
+        uses: azure/setup-helm@v1
+
+      - name: Run chart-releaser
+        uses: helm/chart-releaser-action@v1.4.0
+        env:
+          CR_TOKEN: "${{ secrets.GHCR_PAT }}"
+          CR_OWNER: truecharts
+          CR_GIT_REPO: charts
